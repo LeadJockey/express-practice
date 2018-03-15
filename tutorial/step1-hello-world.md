@@ -1,5 +1,6 @@
 #Hello World
-date : 3.15.18`
+
+create date : 3.15.18`
 
 express 이용해서 간단한 서버 띄워보기
 ## quick start
@@ -64,8 +65,8 @@ nodemon 설치
 > 서버(영어: server)는 클라이언트에게 네트워크를 통해 정보나 서비스를 제공하는 컴퓨터(server computer) 또는 프로그램(server program)을 말한다.  
 > 참고 : [서버에 관하여 - 백과](https://ko.wikipedia.org/wiki/%EC%84%9C%EB%B2%84)
 
-* express 는 app 이라는 인스턴스를 이용해서 클라이언트와 소통 할수 있는 수단을 제공한다.
-* express 없이 node 에서 요청과 반응을 처리하기 위해서는 http 모듈이 필요하다. [http 로 서버구현](https://mylko72.gitbooks.io/node-js/content/chapter7/chapter7_4.html)
+* express 는 app 이라는 인스턴스를 이용해서 클라이언트와 소통 할수 있는 수단을 제공합니다.
+* express 없이 node 에서 요청과 반응을 처리하기 위해서는 http 모듈이 필요합니다. [http 로 서버구현](https://mylko72.gitbooks.io/node-js/content/chapter7/chapter7_4.html)
 * 서버가 작동하기 위해서는 port 라는 개념이 필요합니다. [server port](https://en.wikipedia.org/wiki/Port_(computer_networking))
 * 지정된 port 를 통해서 client -> server 로 request(req) 를 보내옵니다. 그리고 서버는 해당하는 요청에 대해 서버에서 지정해 둔 response(res) 를 발생시키게 됩니다.  [http protocol](https://developer.mozilla.org/ko/docs/Web/HTTP/Messages)
 * quick start 에서 제공된 부분중 app.get(경로, 핸들러) 이 부분을 주목해 보면 express 에서 요청은 url 경로가 해당이 됩니다 그리고 해당 url 요청에 알맞은 핸들러를 달아주게 됩니다.
