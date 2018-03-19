@@ -119,7 +119,7 @@ function createApplication() {
 > module 의 이미는 많겠자만, 이번 express-practice 에서 말하고자 하는 module 이란 npm install 을 통해서 설치되고
 > node 환경에서 require 를 이용해서 하나의 부품으로 가져다 쓸 수 있는 것들을 모듈로 칭하려고 한다.
 
-### server?
+## server?
 > 서버(영어: server)는 클라이언트에게 네트워크를 통해 정보나 서비스를 제공하는 컴퓨터(server computer) 또는 프로그램(server program)을 말한다.  
 > 참고 : [서버에 관하여 - 백과](https://ko.wikipedia.org/wiki/%EC%84%9C%EB%B2%84)
 
