@@ -44,7 +44,7 @@ app.use((req,res,next)=>{
 	next();
 });
 
-// route setting
+// route setting "step3-routing.md 에 기록된 내용을 보고 내부를 express.Router() 의 인스턴스를 받아서 모듈화 해보세요!"
 app.get('/', (req, res) => res.json({msg: 'hello-world'})); // index routing
 app.get('/user', (req, res) => res.json({msg: 'hello-user'}));
 app.get('/user/list', (req, res) => res.json({msg: 'user-list'}));
