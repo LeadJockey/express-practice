@@ -1,0 +1,15 @@
+const express = require('express');
+const app     = express();
+const path    = require('path');
+const pug     = require('pug');
+app.set('port', 4000);
+app.set('views', path.join(__dirname, 'views'));
+app.set('view engine', 'pug');
+app.set('index', `${app.get('views')}/index.pug`);
+app.use(express.json());
+app.use(express.urlencoded());
+app.use(express.static(path.join(__dirname, 'scripts')));
+app.get('/user/list', (req, res) => res.send(pug.renderFile(app.get('index'), {page: 'userlist'})));
+app.get('/user/signup', (req, res) => res.send(pug.renderFile(app.get('index'), {page: 'signup'})));
+// app.get('*', (req, res) => res.json({msg: 'not found'}));
+app.listen(app.get('port'), () => console.log(`log - server:listening on port ${app.get('port')}`));

@@ -1,8 +1,11 @@
 #Hello World
 
-create date : 3.15.18`
+created date : 3.15.18`
+
+updated date : 3.19.18`
 
 express 이용해서 간단한 서버 띄워보기
+
 ## quick start
 ```javascript
 // import modules
@@ -60,6 +63,61 @@ nodemon 설치
 > [맥 패키지관리자 - Homebrew](http://www.popit.kr/%EA%B0%9C%EB%B0%9C%EC%9E%90%EB%A5%BC-%EC%9C%84%ED%95%9C-%EB%A7%A5mac-%EC%A0%95%EB%B3%B4-%ED%8C%A8%ED%82%A4%EC%A7%80%EA%B4%80%EB%A6%AC%EC%9E%90-homebrew/)
 ### npm?
 > [노드 패키지관리자 - NPM](https://velopert.com/241)
+
+## node?
+> Node.js는 확장성 있는 네트워크 애플리케이션(특히 서버 사이드) 개발에 사용되는 소프트웨어 플랫폼이다. 작성 언어로 자바스크립트를 활용하며 Non-blocking I/O와 단일 스레드 이벤트 루프를 통한 높은 처리 성능을 가지고 있다.
+  내장 HTTP 서버 라이브러리를 포함하고 있어 웹 서버에서 아파치 등의 별도의 소프트웨어 없이 동작하는 것이 가능하며 이를 통해 웹 서버의 동작에 있어 더 많은 통제를 가능케 한다.
+  
+출처 : [wikipedia](https://ko.wikipedia.org/wiki/Node.js)  
+
+## express?
+> 익스프레스(Express.js)는 노드(NodeJS) 상에서 동작하는 웹 개발 프레임웍이다. 이외에도 Hapi.js, Koa.js 등 다양한 웹프레임웍이 있지만 현재까지 가장 많이 사용하는 것이 바로 익스프레스이다.
+
+출처 : [webFrameworks](http://webframeworks.kr/getstarted/expressjs/)  
+
+## app?
+> app 은 express module 을 실행시켰을때 반환되는 함수이다. 어플리케이션을 생성해 주는 역할을 하고있다.
+
+```javascript
+/**
+ * Create an express application.
+ *
+ * @return {Function}
+ * @api public
+ */
+
+function createApplication() {
+  var app = function(req, res, next) {
+    app.handle(req, res, next);
+  };
+
+  mixin(app, EventEmitter.prototype, false);
+  mixin(app, proto, false);
+
+  // expose the prototype that will get set on requests
+  app.request = Object.create(req, {
+    app: { configurable: true, enumerable: true, writable: true, value: app }
+  })
+
+  // expose the prototype that will get set on responses
+  app.response = Object.create(res, {
+    app: { configurable: true, enumerable: true, writable: true, value: app }
+  })
+
+  app.init();
+  return app;
+}
+```
+## dependency?
+
+> 의존성이라는 뜻으로 풀이되는 dependency 를 이해하려고 할 때 커플 링에 대해서 알아보면 좋을 것 같다.
+서로간에 결합도를 낮추고 재사용성을 고려하거나 교체가 가능하도록 만들려고 분리 시켜둔 일종의 부품이다.
+
+참조 : [wikipedia](https://en.wikipedia.org/wiki/Coupling_(computer_programming))
+
+## module?
+> module 의 이미는 많겠자만, 이번 express-practice 에서 말하고자 하는 module 이란 npm install 을 통해서 설치되고
+> node 환경에서 require 를 이용해서 하나의 부품으로 가져다 쓸 수 있는 것들을 모듈로 칭하려고 한다.
 
 ### server?
 > 서버(영어: server)는 클라이언트에게 네트워크를 통해 정보나 서비스를 제공하는 컴퓨터(server computer) 또는 프로그램(server program)을 말한다.  
