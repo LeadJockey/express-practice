@@ -12,6 +12,19 @@ const mongoose = require('mongoose');
 const database = mongoose.connection;
 const app      = express(); // express 실행시 반환되는 인스턴스 : 각종 메서드 들이 내장 되어 있음
 
+// model setting - user
+const userSchemaModel = {
+	userEmail : {type: String, default: ''},
+	userPwd   : {type: String, default: ''},
+	userName  : {type: String, default: ''},
+	created_at: {type: Date, default: Date.now},
+	updated_at: {type: Date, default: Date.now}
+};
+const Schema          = mongoose.Schema;
+const userSchema      = new Schema(userSchemaModel);
+const userModel       = mongoose.model('user', userSchema);
+
+
 // app setting
 app.set('port', 3000); // 인스턴스에 필드 추가
 
@@ -21,6 +34,27 @@ app.set('databaseUrl', 'mongodb://localhost/test'); // db path 설정
 database.on('error', console.error);
 database.once('open', () => console.log('log - database:connected to mongo'));
 mongoose.connect(app.get('databaseUrl'));
+
+// mongoose model test -> postman 을 이용해서 post 요청을 서버에게 보내 봅시다.
+// postman 은 크롬 익스텐션중 하나로 view 배치 없이 데이터 요청을 주고 받는것을 가능하게 해주는 툴입니다.
+// REST test 를 빠르게 진행 할 수 있어서 매우 좋습니다.
+app.post('/user/signup-test', (req, res) => {
+	const newUser     = new userModel();
+	newUser.userEmail = req.body.userEmail;
+	newUser.userPwd   = req.body.userPwd;
+	newUser.userName  = req.body.userName;
+	const query       = newUser.save();
+	query.then(() => res.json({msg: `created user ${req.body.userName}`}))
+			 .catch((err) => res.json(err));
+});
+
+// mongoose model test -> db 에 저장된 경로에서 유저 리스트를 가져와 봅시다.
+app.get('/user/list-test', (req, res) => {
+	const query = mongoose.model('user').find({}, 'userEmail userPwd userName');
+	query.select('userEmail userPwd userName')
+			 .then((users) => res.json(users))
+			 .catch((err) => res.json(err));
+});
 ```
 
 ## installation
@@ -38,11 +72,13 @@ mongoose.connect(app.get('databaseUrl'));
 * 등록된 모델은 mongoDB 의 db-collection 단위에서 제어되며, 소통은 등록된 스키마형식에 의거해서 통신됩니다.
 * mongoose 의 또 다른 특징으로는 thanable 아라는 것인데요, 일종의 promise 의 처리 방시으로 볼 수 있습니다.
 * 이러한 점이 부각된 이유는 데이터 처리를 위해서 동기식 처리가 필요하기 때문입니다.
+
 [npmjs](https://www.npmjs.com/package/mongoose)
 
 ## postman?
 * 크롬 익스텐션으로 많이 사용이 되고 있고 개발시 REST 요청에 대한 테스트를 빠르게 할 수 있도록 지원합니다.
 * 아주 좋은 툴이니 자주 써주세요~ 
+
 [getpostman](https://www.getpostman.com/products)
 
 
