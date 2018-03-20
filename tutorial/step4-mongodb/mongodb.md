@@ -32,6 +32,19 @@ mongoose.connect(app.get('databaseUrl'));
 [velopert](https://velopert.com/436)
 
 ## mongoose?
+* express 에서 mongoDB 를 사용 할수 있드록 만들어 주는는  모듈입니다.
+* mongoose 는 mongoDB 와의 연결을 도와주고 mongoose.Schema 를 통해서 스키마를 생성합니다.
+* 스키마에서는 데이터의 구조를 지정해 주어야 하고, mongoose.model('schemaNam', Schema-instance) 를 통해서 모델로 등록하고 관리합니다. 
+* 등록된 모델은 mongoDB 의 db-collection 단위에서 제어되며, 소통은 등록된 스키마형식에 의거해서 통신됩니다.
+* mongoose 의 또 다른 특징으로는 thanable 아라는 것인데요, 일종의 promise 의 처리 방시으로 볼 수 있습니다.
+* 이러한 점이 부각된 이유는 데이터 처리를 위해서 동기식 처리가 필요하기 때문입니다.
+[npmjs](https://www.npmjs.com/package/mongoose)
+
+## postman?
+* 크롬 익스텐션으로 많이 사용이 되고 있고 개발시 REST 요청에 대한 테스트를 빠르게 할 수 있도록 지원합니다.
+* 아주 좋은 툴이니 자주 써주세요~ 
+[getpostman](https://www.getpostman.com/products)
+
 
 ## data access layer?
 > 예를 들어 삽입 , 삭제 및 업데이트 와 같은 명령을 사용하여 데이터베이스의 특정 테이블에 액세스하는 대신 클래스와 몇 가지 저장 프로 시저를 데이터베이스에 만들 수 있습니다.
